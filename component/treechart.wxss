@@ -1,0 +1,113 @@
+/* component/treechart.wxss */
+
+/* 自动适应布局 */
+.tree-item {
+  display: inline-block;
+}
+
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-mate-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10rpx;
+}
+
+.user-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.user-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.vertical-line {
+  width: 4rpx;
+  background-color: #ccc;
+  height: 50rpx;
+}
+
+.horizontal-line {
+  height: 4rpx;
+  background-color: #ccc;
+}
+
+.children-horizontal-line-first {
+  margin-left: calc(50% - 2rpx);
+  width: calc(50% + 2rpx);
+  height: 4rpx;
+  background-color: #ccc;
+  border-top-left-radius: 8rpx;
+}
+
+.children-horizontal-line-last {
+  width: calc(50% + 2rpx);
+  height: 4rpx;
+  background-color: #ccc;
+  border-top-right-radius: 2rpx;
+}
+
+.children-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.vertical-line-children {
+  width: 4rpx;
+  background-color: #ccc;
+  height: 50rpx;
+  margin-left: calc(50% - 2rpx);
+}
+
+.parent-super {
+  display: flex;
+  /*父级要反向排列*/
+  flex-direction: column-reverse;
+}
+
+.parent-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.vertical-line-parent{
+  width: 4rpx;
+  background-color: #ccc;
+  height: 50rpx;
+  margin-left: calc(50% - 2rpx);
+}
+
+
+.parent-horizontal-line-first {
+  margin-left: calc(50% - 2rpx);
+  width: calc(50% + 2rpx);
+  height: 4rpx;
+  background-color: #ccc;
+  border-bottom-left-radius: 8rpx;
+}
+
+.parent-horizontal-line-last {
+  width: calc(50% + 2rpx);
+  height: 4rpx;
+  background-color: #ccc;
+  border-bottom-right-radius: 2rpx;
+}
