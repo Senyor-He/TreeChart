@@ -20,6 +20,13 @@
 
     <view class="user-mate-info">
 
+      <view wx:if="{{dataSource.openList && dataSource.mate}}">
+        <!-- 处理没有兄弟的情况 -->
+        <view wx:if="{{!dataSource.brother}}" style="width:{{dataSource.mate.length * 170}}rpx" />
+        <!-- 处理有兄弟 且 配偶比兄弟多的情况 -->
+        <view wx:elif="{{dataSource.mate.length > dataSource.brother.length}}" style="width:{{(dataSource.mate.length - dataSource.brother.length) * 170}}rpx" />
+      </view>
+
       <!-- 处理兄弟 -->
       <block wx:if="{{dataSource.brother && dataSource.openList}}" wx:for="{{dataSource.brother}}" wx:key="brother">
         <view class="user-info" bindtap="tapAction" bindlongpress="longTapAction" data-dataSource="{{item}}">
@@ -36,16 +43,21 @@
       </view>
 
       <!-- 处理配偶 -->
-      <block wx:if="{{dataSource.mate && dataSource.openList}}" wx:for="{{dataSource.mate}}" wx:key="brother">
+      <block wx:if="{{dataSource.mate && dataSource.openList}}" wx:for="{{dataSource.mate}}" wx:key="mate">
         <view wx:if="{{dataSource.mate}}" class="horizontal-line" style="width:50rpx;margin-bottom:34rpx" />
         <view class="user-info" bindtap="tapAction" bindlongpress="longTapAction" data-dataSource="{{item}}">
           <image class="user-icon" src="{{item.image_url}}" />
           <view class="user-name">{{item.name}}</view>
         </view>
       </block>
-      
-    </view>
 
+      <view wx:if="{{dataSource.openList && dataSource.brother}}">
+        <!-- 处理没有配偶的情况 -->
+        <view wx:if="{{!dataSource.mate}}" style="width:{{dataSource.brother.length * 170}}rpx" />
+        <!-- 处理有配偶 且 兄弟比配偶多的情况 -->
+        <view wx:elif="{{dataSource.brother.length > dataSource.mate.length}}" style="width:{{(dataSource.brother.length - dataSource.mate.length) * 170}}rpx" />
+      </view>
+    </view>
 
     <!-- 子级底部垂直线条 -->
     <view class="vertical-line" wx:if="{{dataSource.children && dataSource.openList}}" />
