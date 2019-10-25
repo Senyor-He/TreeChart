@@ -1,6 +1,6 @@
 # TreeChart
-微信小程序实现的族谱图,可绘制族谱及组织架构图,支持扩展父级，子级，平级，根据格式填充数据源即可
-![image](https://raw.githubusercontent.com/Monkiki920/TreeChart/master/treechart.gif)
-
-预览
-
+微信小程序实现的族谱图
+添加了缩放功能
+但是把展开收缩下级树给删了
+因为跟缩放功能有冲突
+有需要可以看历史版本
