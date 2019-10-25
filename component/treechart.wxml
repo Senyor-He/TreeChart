@@ -2,7 +2,7 @@
 <view class="tree-item">
   <view class="tree-container">
     <!-- 渲染父级 -->
-    <view wx:if="{{dataSource.parent && dataSource.openList}}" class="parent-super">
+    <view wx:if="{{dataSource.parent}}" class="parent-super">
       <view class="parent-container">
         <block wx:for="{{dataSource.parent}}" wx:key="parent">
           <view>
@@ -16,11 +16,11 @@
     </view>
 
     <!-- 父级顶部垂直线条 -->
-    <view class="vertical-line" wx:if="{{dataSource.parent && dataSource.openList}}" />
+    <view class="vertical-line" wx:if="{{dataSource.parent}}" />
 
     <view class="user-mate-info">
 
-      <view wx:if="{{dataSource.openList && dataSource.mate}}">
+      <view wx:if="{{dataSource.mate}}">
         <!-- 处理没有兄弟的情况 -->
         <view wx:if="{{!dataSource.brother}}" style="width:{{dataSource.mate.length * 170}}rpx" />
         <!-- 处理有兄弟 且 配偶比兄弟多的情况 -->
@@ -28,8 +28,8 @@
       </view>
 
       <!-- 处理兄弟 -->
-      <block wx:if="{{dataSource.brother && dataSource.openList}}" wx:for="{{dataSource.brother}}" wx:key="brother">
-        <view class="user-info" bindtap="tapAction" bindlongpress="longTapAction" data-dataSource="{{item}}">
+      <block wx:if="{{dataSource.brother}}" wx:for="{{dataSource.brother}}" wx:key="brother">
+        <view class="user-info" bindtap="tapAction" data-dataSource="{{item}}">
           <image class="user-icon" src="{{item.image_url}}" />
           <view class="user-name">{{item.name}}</view>
         </view>
@@ -37,21 +37,21 @@
       </block>
 
       <!-- 处理本人 -->
-      <view class="user-info" bindtap="tapAction" bindlongpress="longTapAction" data-dataSource="{{dataSource}}">
+      <view class="user-info" bindtap="tapAction" data-dataSource="{{dataSource}}">
         <image class="user-icon" src="{{dataSource.image_url}}" />
         <view class="user-name">{{dataSource.name}}</view>
       </view>
 
       <!-- 处理配偶 -->
-      <block wx:if="{{dataSource.mate && dataSource.openList}}" wx:for="{{dataSource.mate}}" wx:key="mate">
+      <block wx:if="{{dataSource.mate}}" wx:for="{{dataSource.mate}}" wx:key="mate">
         <view wx:if="{{dataSource.mate}}" class="horizontal-line" style="width:50rpx;margin-bottom:34rpx" />
-        <view class="user-info" bindtap="tapAction" bindlongpress="longTapAction" data-dataSource="{{item}}">
+        <view class="user-info" bindtap="tapAction" data-dataSource="{{item}}">
           <image class="user-icon" src="{{item.image_url}}" />
           <view class="user-name">{{item.name}}</view>
         </view>
       </block>
 
-      <view wx:if="{{dataSource.openList && dataSource.brother}}">
+      <view wx:if="{{dataSource.brother}}">
         <!-- 处理没有配偶的情况 -->
         <view wx:if="{{!dataSource.mate}}" style="width:{{dataSource.brother.length * 170}}rpx" />
         <!-- 处理有配偶 且 兄弟比配偶多的情况 -->
@@ -60,10 +60,10 @@
     </view>
 
     <!-- 子级底部垂直线条 -->
-    <view class="vertical-line" wx:if="{{dataSource.children && dataSource.openList}}" />
+    <view class="vertical-line" wx:if="{{dataSource.children}}" />
 
     <!-- 渲染子级 -->
-    <view wx:if="{{dataSource.children && dataSource.openList}}" class="children-container">
+    <view wx:if="{{dataSource.children}}" class="children-container">
       <block wx:for="{{dataSource.children}}" wx:key="children">
         <view>
           <!-- 设定第一个和最后一个对象的线条宽度以及圆角 -->

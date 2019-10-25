@@ -31,56 +31,15 @@ Page({
       }],
       brother: [{
           name: '兄弟',
-          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          children: [{
-            name: '儿子',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '女儿',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }],
-          parent: [{
-            name: '父亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '母亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }]
+          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140"
         },
         {
           name: '兄弟',
-          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          children: [{
-            name: '儿子',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '女儿',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }],
-          parent: [{
-            name: '父亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '母亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }]
-        }, {
+          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140"
+        },
+        {
           name: '兄弟',
-          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          children: [{
-            name: '儿子',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '女儿',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }],
-          parent: [{
-            name: '父亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }, {
-            name: '母亲',
-            image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140",
-          }]
+          image_url: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1135862589,761779521&fm=179&app=42&f=JPEG?w=121&h=140"
         }
       ],
       children: [{
@@ -217,4 +176,10 @@ Page({
       ],
     },
   },
+  onChange(e) {
+    console.log(e.detail)
+  },
+  onScale(e) {
+    console.log(e.detail.scale)
+  }
 })

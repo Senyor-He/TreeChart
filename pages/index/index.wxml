@@ -1,5 +1,5 @@
-<view class="container" style="height:{{isiPhoneX?'calc(100vh - 66rpx)':'100vh'}}">
-  <scroll-view scroll-x scroll-y class="super-container" style="max-height:{{isiPhoneX?'calc(100vh - 66rpx)':'100vh'}}">
+<movable-area scale-area style="height: {{isiPhoneX?'calc(100vh - 66rpx)':'100vh'}}">
+  <movable-view direction="all" bindchange="onChange" bindscale="onScale" scale>
     <tree-chart dataSource="{{dataSource}}" isRoot="true" />
-  </scroll-view>
-</view>
+  </movable-view>
+</movable-area>
