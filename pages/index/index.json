@@ -1,6 +1,8 @@
 {
-  "disableScroll": true,
+  "navigationBarBackgroundColor": "#000000",
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "家族树",
   "usingComponents": {
-    "tree-chart": "../../component/treechart"
+    "tree-chart": "../../component/treechart/treechart"
   }
 }

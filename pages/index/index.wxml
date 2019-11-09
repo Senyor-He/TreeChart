@@ -1,5 +1,5 @@
-<movable-area scale-area style="height: {{isiPhoneX?'calc(100vh - 66rpx)':'100vh'}}">
-  <movable-view direction="all" bindchange="onChange" bindscale="onScale" scale>
+<movable-area wx: if="{{dataSource}}" scale-area style="height: {{isiPhoneX?'calc(100vh - 66rpx)':'100vh'}}">
+  <movable-view scale direction="all" scale-value="0.5">
     <tree-chart dataSource="{{dataSource}}" isRoot="true" />
   </movable-view>
 </movable-area>

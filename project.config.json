@@ -13,9 +13,9 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
+	"libVersion": "2.9.2",
 	"appid": "wx9635415239759231",
-	"projectname": "TestDemo",
+	"projectname": "TreeChart",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

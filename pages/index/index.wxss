@@ -1,9 +1,15 @@
+
+page{
+  background-color: #000;
+
+}
 movable-area{
   width:100vw;
 }
 
 movable-view {
-  width: auto;
-  height: auto;
+  width: 10000rpx;
+  height: 10000rpx;
+  display: flex;
 }
 
