@@ -1,6 +1,9 @@
 # TreeChart
 微信小程序实现的族谱图
 
-解决了一些小bug
 
-目前为止没发现什么大问题
+预览
+
+![image](https://github.com/Monkiki920/TreeChart/blob/master/treechart.gif?raw=true)
+
+
