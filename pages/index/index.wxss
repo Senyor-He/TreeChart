@@ -4,12 +4,12 @@ page{
 
 }
 movable-area{
-  width:100vw;
+  overflow: hidden;
+  width: 100vw;
 }
 
 movable-view {
-  width: 10000rpx;
-  height: 10000rpx;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-

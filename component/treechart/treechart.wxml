@@ -3,60 +3,67 @@
   <view class="user-super-container">
     <!-- 画当前节点 -->
     <view class="user-wife-container">
-      <!-- 如果有妻子没儿子左右边距各加45rpx 否则不添加边距  因为要画一条水平线关联夫妻关系 -->
-      <view class="user-container" style="width:{{dataSource.wife && !dataSource.children?'160rpx':'250rpx'}}">
+
+      <!-- 有妻子 有儿子的情况下 给当前节点添加22.5rpx的右侧内边距-->
+      <view class="user-container" style="padding-right:{{dataSource.wife && dataSource.children?'22.5rpx':'0'}}">
         <!-- 每个子节点头部画一个垂直的线  根节点除外 -->
-        <view wx:if="{{!isRoot}}" class="vertical-line" style="background-color:white;" />
+        <view wx:if="{{!isRoot}}" class="vertical-line" />
         <!-- 用户信息 -->
         <view class="user-info" bindtap="itemClick" data-item="{{dataSource}}">
-          <image class="user-avatar" src="{{dataSource.thumb}}" />
-          <view class="avatar-name-line" />
-          <view class="user-name">{{dataSource.username}}</view>
+          <image class="user-avatar" src="{{dataSource.isBind ? dataSource.thumb : dataSource.gender == 1 ? '../../resources/images/icon_default_woman.png' : '../../resources/images/icon_default_man.png'}}" />
+
+          <view class="user-name {{dataSource.isself ? 'user-self' : ''}}">
+            <view class="user-name-text">{{dataSource.username}}</view>
+            <image class="user-sex" src="{{dataSource.gender == 1 ? '../../resources/images/icon_sex_woman.png' : '../../resources/images/icon_sex_man.png'}}" />
+          </view>
         </view>
 
         <!-- 如果当前节点有儿子 有妻子 在节点下方画一条垂直的线 -->
-        <view wx:if="{{dataSource.children && dataSource.wife}}" class="vertical-line" style="background-color:red" />
+        <view wx:if="{{dataSource.children && dataSource.wife}}" class="vertical-line" />
       </view>
 
 
       <!-- 处理配偶 -->
-      <!-- 如果有配偶 没儿子  则画一根水平线关联夫妻关系 如果是不是根节点 头部会有一根50rpx的线 所以要给这根水平线添加50rpx的顶部边距才能让这根线跟item居中 -->
-      <view wx:if="{{!dataSource.children && dataSource.wife}}" class="horizontal-line" style="background-color:green;width:70rpx;margin-left:10rpx;margin-right:10rpx; margin-top:50rpx;" />
+      <!-- 如果有配偶 没儿子  则画一根水平线关联夫妻关系 -->
+      <view wx:if="{{!dataSource.children && dataSource.wife}}" class="horizontal-line" style="width:35rpx;margin-left:5rpx;margin-right:5rpx;" />
 
-      <!-- 如果有儿子左右边距各加45rpx 否则不添加边距  因为要画一条水平线关联夫妻关系 -->
-      <view wx:if="{{dataSource.wife}}" class="user-container" style="width:{{!dataSource.children?'160rpx':'250rpx'}}">
+      <!-- 有妻子 没有儿子的情况下 给当前配偶节点添加22.5rpx的左侧内边距-->
+      <view wx:if="{{dataSource.wife}}" class="user-container" style="padding-left:{{dataSource.wife && dataSource.children?'22.5rpx':'0'}}">
 
         <!-- 每个子节点头部画一个垂直的线 由于是配偶  要透明处理 -->
         <view wx:if="{{!isRoot}}" class="vertical-line" style="background-color:rgba(0,0,0,0)" />
         <!-- 用户信息 -->
         <view class="user-info" bindtap="itemClick" data-item="{{dataSource.wife}}">
-          <image class="user-avatar" src="{{dataSource.wife.thumb}}" />
-          <view class="avatar-name-line" />
-          <view class="user-name">{{dataSource.wife.username}}</view>
+          <image class="user-avatar" src="{{dataSource.wife.isBind ? dataSource.wife.thumb : dataSource.wife.gender == 1 ? '../../resources/images/icon_default_woman.png' : '../../resources/images/icon_default_man.png'}}" />
+
+          <view class="user-name">
+            <view class="user-name-text">{{dataSource.wife.username}}</view>
+            <image class="user-sex" src="{{dataSource.wife.gender == 1 ? '../../resources/images/icon_sex_woman.png' : '../../resources/images/icon_sex_man.png'}}" />
+          </view>
         </view>
 
         <!-- 如果当前节点有儿子 在配偶下方画一条垂直的线 -->
-        <view wx:if="{{dataSource.children}}" class="vertical-line" style="background-color:green" />
+        <view wx:if="{{dataSource.children}}" class="vertical-line" />
       </view>
     </view>
     <!-- 如果当前节点有儿子并且有配偶 在夫妻下方画一条水平的线 并设置左下 右下圆角 -->
-    <view wx:if="{{dataSource.children && dataSource.wife}}" class="horizontal-line left-bottom-radius right-bottom-radius" style="background-color:red" />
+    <view wx:if="{{dataSource.children && dataSource.wife}}" class="horizontal-line left-bottom-radius right-bottom-radius" />
   </view>
 
   <!-- 有多个儿子 先要画一条垂直的线 再画一条水平的线 -->
-  <view wx:if="{{dataSource.children.length > 1}}" class="vertical-line" style="background-color:blue" />
+  <view wx:if="{{dataSource.children.length > 1}}" class="vertical-line" />
 
-  <!-- 渲染子节点 如果他的下级是独生子并且有妻子 则下级的整个布局向右移动258rpx -->
-  <view wx:if="{{dataSource.children}}" class="children-container" style="margin-left:{{dataSource.children.length==1 && dataSource.children[0].wife?'258rpx':'0'}}">
+  <!-- 渲染子节点 如果他的下级最后一个子节点有配偶 则下级的整个布局向右移动144rpx -->
+  <view wx:if="{{dataSource.children}}" class="children-container" style="margin-left:{{dataSource.children[dataSource.children.length-1].wife?'144rpx':'0'}}">
     <block wx:for="{{dataSource.children}}" wx:key="childrenKey{{index}}">
       <view class="children-super">
         <block wx:if="{{dataSource.children.length > 1}}">
           <!-- 第一个的情况 -->
-          <view wx:if="{{index==0}}" class="horizontal-line left-top-radius {{item.wife?'first-wife-line':'first-line'}}" style="background-color:green" />
+          <view wx:if="{{index==0}}" class="horizontal-line left-top-radius {{item.wife?'first-wife-line':'first-line'}}" />
           <!-- 最后一个 -->
-          <view wx:elif="{{index==dataSource.children.length-1}}" class="horizontal-line right-top-radius {{item.wife?'last-wife-line':'last-line'}}" style="background-color:green" />
+          <view wx:elif="{{index==dataSource.children.length-1}}" class="horizontal-line right-top-radius {{item.wife?'last-wife-line':'last-line'}}" />
           <!-- 中间的 -->
-          <view wx:else class="horizontal-line" style="background-color:green;width:100%"></view>
+          <view wx:else class="horizontal-line" style="width:100%" />
         </block>
         <tree-chart dataSource="{{item}}" />
       </view>
